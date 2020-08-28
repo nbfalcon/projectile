@@ -3471,9 +3471,9 @@ regular expression."
     (call-interactively find-tag-fn)))
 
 (defmacro projectile-with-default-dir (dir &rest body)
-  "Invoke in DIR the BODY."
+  "Invoke in DIR the BODY, unless DIR is nil."
   (declare (debug t) (indent 1))
-  `(let ((default-directory ,dir))
+  `(when-let ((default-directory ,dir))
      ,@body))
 
 ;;;###autoload
